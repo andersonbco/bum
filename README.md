@@ -7,7 +7,7 @@
 
 `bum` is a daemon that downloads album art for songs playing in `mpd`/`mopidy` and displays them in a little window. `bum` doesn't loop on a timer, instead it waits for `mpd`/`mopidy` to send a `player` event. When it receives a `player` event it wakes up and downloads album art for the current playing track. This makes `bum` lightweight and makes it idle at `~0%` CPU usage.
 
-`bum` uses [musicbrainz](https://musicbrainz.org/) to source and download cover art, if an album is missing it's cover art you can easily create an account and fill in the data yourself. `bum` outputs a `release-id` which you can use to find the exact entry on musicbrainz.
+This fork of `bum` utilizes [sacad](https://pypi.org/project/sacad/) to download the album art based on the artist and album name retrieved from MPD. It is based on this fork https://github.com/jishnusen/bum, but uses MPD instead of PlayerCTL, just like the original version of `bum`.
 
 Note: `bum` is meant to be used with files that don't have embedded album art (`mopidy-spotify`).
 
@@ -20,13 +20,15 @@ Note: `bum` is meant to be used with files that don't have embedded album art (`
 - `python 3.6+`
 - `python-mpv`
 - `python-mpd2`
-- `musicbrainzngs`
+- `sacad`
 
 
-## Installation
+## Local installation
 
 ```sh
-pip3 install --user bum
+git clone https://github.com/andersonbco/bum.git
+cd bum
+python3 setup.py install --user
 ```
 
 
