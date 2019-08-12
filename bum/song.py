@@ -36,7 +36,8 @@ def get_art(cache_dir, size, client):
     else:
         print("album: Downloading album art...")
 
-        os.system(str('sacad "' + str(song['artist']) + '" "' + str(song['album']) + '" "' + str(250) + '" "' + str(file_name) + '"'))
+        os.system(str('sacad "' + str(song['artist']) + '" "' + str(song['album']) +
+                      '" "' + str(250) + '" "' + str(file_name) + '"'))
         shutil.copy(file_name, cache_dir / "current.jpg")
-        
+
         print(f"album: Swapped art to {song['artist']}, {song['album']}.")
