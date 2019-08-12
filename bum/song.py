@@ -5,10 +5,6 @@ import shutil
 import os
 import mpd
 
-from . import brainz
-from . import util
-
-
 def init(port=6600, server="localhost"):
     """Initialize mpd."""
     client = mpd.MPDClient()
@@ -40,11 +36,7 @@ def get_art(cache_dir, size, client):
     else:
         print("album: Downloading album art...")
 
-        brainz.init()
-        album_art = brainz.get_cover(song, size)
-
-        if album_art:
-            util.bytes_to_file(album_art, cache_dir / file_name)
-            util.bytes_to_file(album_art, cache_dir / "current.jpg")
-
-            print(f"album: Swapped art to {song['artist']}, {song['album']}.")
+        os.system(str('sacad "' + str(song['artist']) + '" "' + str(song['album']) + '" "' + str(250) + '" "' + str(file_name) + '"'))
+        shutil.copy(file_name, cache_dir / "current.jpg")
+        
+        print(f"album: Swapped art to {song['artist']}, {song['album']}.")

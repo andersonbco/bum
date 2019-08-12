@@ -40,7 +40,7 @@ setuptools.setup(
         "console_scripts": ["bum=bum.__main__:main"]
     },
     install_requires=[
-        "musicbrainzngs",
+        "sacad",
         "python-mpv",
         "python-mpd2",
     ],
